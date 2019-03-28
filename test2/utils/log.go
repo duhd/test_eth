@@ -48,12 +48,14 @@ func  LogEnd(key string, nonce uint64){
         fmt.Println(time.Now()," err: Cannot set data - ", err)
     	}
 
+    time_receive_ms := (data.TxReceiveTime - data.RequestTime)/1000000
+  time_confirm_ms := (TxConfirmedTime  - data.RequestTime )/1000000
+  
       if data.TxNonce != nonce {
         fmt.Println(time.Now()," nonce:",data.TxNonce," tx:",key," request:",data.RequestTime," receive:", time_receive_ms, " error:",nonce)
       }
 
-  time_receive_ms := (data.TxReceiveTime - data.RequestTime)/1000000
-  time_confirm_ms := (TxConfirmedTime  - data.RequestTime )/1000000
+
   fmt.Println(time.Now()," nonce:",data.TxNonce," tx:",key," request:",data.RequestTime," receive:", time_receive_ms, " confirm:",time_confirm_ms)
 }
 
